@@ -1,3 +1,5 @@
+@item = Item.new
+
 .container
   - if @items.empty?
     %span.text-warning There are no tasks!
@@ -5,10 +7,9 @@
     %ul
       - @items.each do |task|
         %li= task.task
-        
+
+
 .container
-  %form{ :action => "/create", :method => "post"}
-    %fieldset
-      %label{:for => @items} Add to to-do list
-      %input{:type => "text", :task => "task", :class => "string"}
-    %input{:type => "submit", :value => "Add to list", :class => "button"}
+  = form_for @item, url:{action: "create"}, html: {class: "nifty_form"} do |f|
+    = f.text_field :task
+    = f.submit "Add to todo list"
