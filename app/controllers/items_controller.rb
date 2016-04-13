@@ -1,11 +1,13 @@
 class ItemsController < ApplicationController
+  protect_from_forgery
+  
   
   def index
     @items = Item.all
   end
 
   def create
-    Item.create(item_create_params)
+    @item = Item.new(item_create_params)
     redirect_to items_path
   end
   
@@ -14,14 +16,17 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+
+
+
   private
   
   def item_create_params
-    params.require(:item).permit(:item)
+    params.require(:item).permit(:task)
   end
   
   def item_update_params
-    params.require(:item).permit(:item, :complete, :deleted)
+    params.require(:item).permit(:task, :complete, :deleted)
   end
   
 end

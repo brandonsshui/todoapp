@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+  root to: 'items#index'
   get 'items' => 'items#index'
-  post 'items' => 'items#create'
+  post 'create' => 'items#create'
   put 'items/:id' => 'items#update'
 
   # The priority is based upon order of creation: first created -> highest priority.

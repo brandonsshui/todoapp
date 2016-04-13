@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20160407041252) do
 
   create_table "items", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "item"
+    t.string   "task"
     t.boolean  "complete"
     t.boolean  "deleted"
     t.datetime "created_at", null: false
